@@ -141,7 +141,7 @@ p, div, li, h1, h2, h3, h4, h5, h6{
     opacity: 1;
 }
 
-.price-carousel::after {
+.doctor-carousel::after {
     position: absolute;
     content: "";
     width: 100%;
@@ -153,7 +153,7 @@ p, div, li, h1, h2, h3, h4, h5, h6{
     z-index: -1;
 }
 
-.price-carousel .owl-nav {
+.doctor-carousel .owl-nav {
     margin-top: 35px;
     width: 100%;
     text-align: center;
@@ -161,8 +161,8 @@ p, div, li, h1, h2, h3, h4, h5, h6{
     justify-content: center;
 }
 
-.price-carousel .owl-nav .owl-prev,
-.price-carousel .owl-nav .owl-next{
+.doctor-carousel .owl-nav .owl-prev,
+.doctor-carousel .owl-nav .owl-next{
     position: relative;
     margin: 0 5px;
     width: 45px;
@@ -177,8 +177,8 @@ p, div, li, h1, h2, h3, h4, h5, h6{
     transition: .5s;
 }
 
-.price-carousel .owl-nav .owl-prev:hover,
-.price-carousel .owl-nav .owl-next:hover {
+.doctor-carousel .owl-nav .owl-prev:hover,
+.doctor-carousel .owl-nav .owl-next:hover {
     color: var(--dark);
 }
 
