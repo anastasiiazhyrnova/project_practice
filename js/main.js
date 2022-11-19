@@ -42,8 +42,8 @@
     });
 
 
-    // Price carousel
-    $(".price-carousel").owlCarousel({
+    // Doctor carousel
+    $(".doctor-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 1000,
         margin: 45,
