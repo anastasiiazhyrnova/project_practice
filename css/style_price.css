@@ -99,12 +99,6 @@ p, div, li, h1, h2, h3, h4, h5, h6{
         padding: 10px 0;
     }
 }
-
-.hero-header {
-    background: url(../img/hero.jpg) top right no-repeat;
-    background-size: cover;
-}
-
 .service-item {
     position: relative;
     height: 350px;
