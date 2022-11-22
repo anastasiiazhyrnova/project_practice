@@ -1,11 +1,18 @@
+<?php
+    header('Content-Type: text/html; charset=utf-8');
+    include 'db.php';
+    $db = new ClinicDB();
+    $db->connect();
+    $db->register();
+?>
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Проект</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="img/favicon.ico" rel="icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -39,7 +46,7 @@
                         <a href="contact.html" class="nav-item nav-link">Контакти</a>
                         <a href="price.html" class="nav-item nav-link">Прайс</a>
                         <a href="doctors.html" class="nav-item nav-link">Cпеціалісти</a>
-                        <a href="register.html" class="nav-item nav-link active">Реєстрація</a>
+						<a href="auth.php" class="nav-item nav-link active">Вхід/Реєстрація</a>
                     </div>
                 </div>
             </nav>
@@ -54,50 +61,50 @@
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="mb-4">
                         <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Реєстрація кліента</h5>
+                        <h1 class="display-4">Make An Appointment For Your Family</h1>
                     </div>
-                    <div class="position-relative h-100" style="min-height: 400px;">
-                        <img class="position-absolute w-100 h-100 rounded"
-                            src="img/doc.png" style="object-fit: contain;">
-                    </div>
+                    <p class="text-white mb-5">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua.</p>
+                    <h6 class="text-black mb-3">Вже маєте акаунт?</h6>
+                    <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="auth.php">Увійти</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="bg-white text-center rounded p-5">
-                        <h1 class="mb-4">Форма реєстрації</h1>
-                        <form action="connect.php" method="post">
+                        <h1 class="mb-4">Реєстрація</h1>
+                        <form method="post">
                             <div class="row g-3">
 							  <div class="col-12 col-sm-4">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Прізвище" name="surname" style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Прізвище" style="height: 55px;" name="surname">
                                 </div>
                                 <div class="col-12 col-sm-4">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Ім'я" style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Ім'я" style="height: 55px;" name="name">
                                 </div>
 								<div class="col-12 col-sm-4">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="По-батькові" style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="По-батькові" style="height: 55px;" name="patronymic">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
+                                    <select class="form-select bg-light border-0" style="height: 55px;" name="gender">
                                         <option selected>Стать</option>
                                         <option value="female">Жінка</option>
                                         <option value="male">Чоловік</option>
                                         <option value="хз">Не визначився</option>
-                                    </select>
+                                    </select> 
                                 </div>
                               
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date" data-target-input="nearest">
                                         <input type="text"
                                             class="form-control bg-light border-0 datetimepicker-input"
-                                            placeholder="Дата народження" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                            placeholder="Дата народження" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" name="birth_date">
                                     </div>
                                 </div>
 								<div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Ел.пошта" style="height: 55px;">
+                                    <input type="email" class="form-control bg-light border-0" placeholder="Ел.пошта" style="height: 55px;" name="email">
                                 </div>
 								<div class="col-12 col-sm-6">
-                                    <input type="password" class="form-control bg-light border-0" placeholder="Пароль" style="height: 55px;">
+                                    <input type="password" class="form-control bg-light border-0" placeholder="Пароль" style="height: 55px;"  name="password">
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Створити кабінет</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit" name="submit">Створити кабінет</button>
                                 </div>
                             </div>
                         </form>
@@ -122,5 +129,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
