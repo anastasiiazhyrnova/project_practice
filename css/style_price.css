@@ -99,6 +99,12 @@ p, div, li, h1, h2, h3, h4, h5, h6{
         padding: 10px 0;
     }
 }
+
+.hero-header {
+    background: url(../img/hero.jpg) top right no-repeat;
+    background-size: cover;
+}
+
 .service-item {
     position: relative;
     height: 350px;
@@ -279,4 +285,58 @@ p, div, li, h1, h2, h3, h4, h5, h6{
 .testimonial-carousel .owl-item img {
     width: 150px;
     height: 150px;
+}
+
+
+#le-Table-1 {
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th {
+    cursor: pointer;
+}
+
+#le-Table-1 th:hover {
+    background-color: #e8e8e8;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 16px;
+}
+
+#le-Table-1 tr.header {
+    background-color: #f2f2f2;
+}
+
+tr {
+    background-color: white;
+}
+
+#le-Table-1 tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+
+#le-Input-1 {
+    background-image: url('../img/search.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    width: 300px;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+
+.imgRate {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
 }

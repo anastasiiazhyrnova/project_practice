@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -7,37 +7,27 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Topbar End -->
-
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a class="navbar-brand" href="index.html">
                     <h1><img src="img/favicon.ico" width="50" height="50" class="fa fa-clinic-medical me-2" alt="">
-                <span class="m-0 text-uppercase text-primary">Clinic</h1></span>
+                        <span class="m-0 text-uppercase text-primary">Clinic
+                    </h1></span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -49,134 +39,527 @@
                         <a href="contact.html" class="nav-item nav-link">Контакти</a>
                         <a href="price.html" class="nav-item nav-link">Прайс</a>
                         <a href="doctors.html" class="nav-item nav-link active">Cпеціалісти</a>
-                        <a href="register.html" class="nav-item nav-link">Реєстрація</a>
+                        <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
+
+    <div class="container-fluid py-2">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Our Doctors</h5>
+                <h1 class="display-4">Обирай свого лікаря</h1>
+                <h5 class="fw-normal">
+                    Медичний центр, який надає повний спектр послуг для сім'ї. Приймають лише висококваліфіковані лікарі
+                    різних галузей
+                </h5>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Doctor - Table -->
+    <div class="container-fluid py-2">
+        <div class="container">
+            <input type="text" id="le-Input-1" onkeyup="tableSearch()" placeholder="Пошук за інфо лікаря.."
+                title="Введіть потрібний запит" style=" display:inline">
+            <p></p>
+            <table>
+                <tr>
+                    <td>
+                        <input type='checkbox' onclick='return filter_type(this);' name='filter' id="Чоловік"
+                            value="Чоловік" />
+                        Чоловік
+                    </td>
+                    <td>
+                        <input type='checkbox' onclick='return filter_type(this);' name='filter' id="Жінка"
+                            value="Жінка" /> Жінка
+                    </td>
+                </tr>
+            </table>
+            <p></p>
+            <p></p>
+
+            <div class="col-md-12 text-center">
+                <table class="table align-middle mb-0 bg-white" id="le-Table-1">
+                    <thead class="bg-light">
+                        <tr class="header">
+                            <th onclick="sortTable(0)">ПІБ</th>
+                            <th onclick="sortTable(1)">Посада</th>
+                            <th onclick="sortTable(2)">Стать</th>
+                            <th onclick="sortTable(3)">Досвід</th>
+                            <th>Рейтинг</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-1.png" alt="" style="width: 45px; height: 45px"
+                                        class="rounded-circle" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Гнатюк Софія Михайлівна
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар</p>
+                                <p class="text-muted mb-0">акушер-гінеколог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Жінка</p>
+                            </td>
+                            <td>5 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-2.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Семеновa Інна Степанівна
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-терапевт</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Жінка</p>
+                            </td>
+                            <td>2 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-3.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Денисенков Антон Іванович
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-стоматолог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Чоловік</p>
+                            </td>
+                            <td>3 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-4.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Гриценко Олег Віталійович
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-алерголог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Чоловік</p>
+                            </td>
+                            <td>8 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-5.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Заворотченко Іван Євгенович</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-невролог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Чоловік</p>
+                            </td>
+                            <td>3 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-6.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Данилюк Анна Володимірівна</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-діетолог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Жінка</p>
+                            </td>
+                            <td>3.5 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-7.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Гончаренко Олеся Петрівна</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-трихолог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Жінка</p>
+                            </td>
+                            <td>1.5 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-8.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Кириченко Анатолій Андрійович</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-кардіолог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Чоловік</p>
+                            </td>
+                            <td>12.9 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-9.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Матвійчук Кірілл Денисович
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-гастроентеролог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Чоловік</p>
+                            </td>
+                            <td>4 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-10.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Федорова Катерина Сергіївна</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">УЗД-фахівець</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Жінка</p>
+                            </td>
+                            <td>3 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-11.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Левчук Яна Вікторівна
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-гепатолог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Жінка</p>
+                            </td>
+                            <td>3.8 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-12.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Кузнецова Євгенія Богданівна</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Лікар-ендокринолог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Жінка</p>
+                            </td>
+                            <td>10 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+
+                        <tr class='clickable-row' data-href='#link'>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="./img/doc-13.png" class="rounded-circle" alt=""
+                                        style="width: 45px; height: 45px" />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1 text-center">Муляр Андрій Миколайович
+                                        </p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Сімейний психолог</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">Чоловік</p>
+                            </td>
+                            <td>5.6 років</td>
+                            <td>
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                                <img src="./img/rate.png" class='imgRate' alt="Оцінка" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid py-2">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4 align-items-center">
+                    <button class="btn btn-primary w-100 py-3" type="submit" title="Записатись"
+                        onclick="window.location.href = 'appointment.html';">
+                        Записатись до лікаря</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Feedback Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Наші спеціалісти</h5>
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Feedback</h5>
+                <h1 class="display-4">Відгуки наших клієнтів</h1>
             </div>
-            <div class="owl-carousel doctor-carousel position-relative" style="padding: 0 45px 45px 45px;">
-                <div class="doctor-item">
-                <div class="bg-light rounded text-center">
-                    <div class="position-relative">
-                        <img class="img-fluid rounded" src="img/doctor-1.jpg" alt="">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/review-1.jpg" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                    style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h3>Меган Маркл</h3>
+                            <p class="fs-4 fw-normal">Приходили з чоловіком до стоматолога та психолога, все
+                                сподобалось!
+                                Порекомендувала вас всім в Buckingham Palace))</p>
+                            <hr class="w-25 mx-auto">
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/review-2.png" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                    style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h3>Анджеліна Джолі</h3>
+                            <p class="fs-4 fw-normal">Дякую лікарям, у травні 2022 приїзджала до Ukraine та
+                                вилікувала тут всіх 6-х свої діточок!
+                                Також дала контакти моїм Hollywood' подругам!)</p>
+                            <hr class="w-25 mx-auto">
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/review-4.jpg" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                    style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h3>Віталій Кличко</h3>
+                            <p class="fs-4 fw-normal">Прийшов лікувати зуби, вирвали два, чотири із яких.. ну ви понялі,
+                                рекомендую!
+                            </p>
+                            <hr class="w-25 mx-auto">
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/review-3.jpg" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                    style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h3>Леонардо Ді Капріо</h3>
+                            <p class="fs-4 fw-normal">Відзначав отримання Оскара, зірвав підшлункову, думав гаплик мені,
+                                а Анджеліна Джолі дала ваші контакти, і миттю прилетів!!
+                                Дуже вдячний!</p>
+                            <hr class="w-25 mx-auto">
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle mx-auto" src="img/review-5.jpg" alt="">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                    style="width: 60px; height: 60px;">
+                                    <i class="fa fa-quote-left fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h1>ЗАБЛОКОВАНИЙ КЛІЄНТ</h1>
+                            <h3>Оксана Марченко</h3>
+                            <p class="fs-4 fw-normal">Перед подорожжю приїхала до косметолога, але був тут тільки
+                                пластичний хірург, отож хочу порекоментувати цю клініку.
+                                Немає жодних сумнівів, жодних сумнівів немає, що вона найкраща. Dost kara gunde belli
+                                olur!
+                            </p>
+                            <hr class="w-25 mx-auto">
+                        </div>
                     </div>
-                    <div class="text-center py-5">
-                        <h3>Гнатюк Софія</h3>
-                        <h3>Михайлівна</h3>
-                        <h6 class="fw-normal fst-italic text-primary mb-4">Лікар акушер-гінеколог</h6>
-                        <p class="fw-normal text-primary mb-4">Досвід: з 2018</p>
-                    </div>
-                </div>
-                </div>
-                <div class="doctor-item">
-                <div class="bg-light rounded text-center">
-                    <div class="position-relative">
-                        <img class="img-fluid rounded" src="img/doctor-2.jpg" alt="">
-                    </div>
-                    <div class="text-center py-5">
-                        <h3>Семенов Володимир</h3>
-                        <h3>Степанович</h3>
-                        <h6 class="fw-normal fst-italic text-primary mb-4">Лікар-терапевт</h6>
-                        <p class="fw-normal text-primary mb-4">Досвід: з 1998</p>
-                    </div>
-                </div>
-                </div>
-                <div class="doctor-item">
-                <div class="bg-light rounded text-center">
-                    <div class="position-relative">
-                        <img class="img-fluid rounded" src="img/doctor-3.jpg" alt="">
-                    </div>
-                    <div class="text-center py-5">
-                        <h3>Денисенков Антон</h3>
-                        <h3>Іванович</h3>
-                        <h6 class="fw-normal fst-italic text-primary mb-4">Лікар-стоматолог</h6>
-                        <p class="fw-normal text-primary mb-4">Досвід: з 2012</p>
-                    </div>
-                </div>
-                </div>
-                <div class="doctor-item">
-                <div class="bg-light rounded text-center">
-                    <div class="position-relative">
-                        <img class="img-fluid rounded" src="img/doctor-4.jpg" alt="">
-                    </div>
-                    <div class="text-center py-5">
-                        <h3>Заворотченко Оксана</h3>
-                        <h3>Вікторівна</h3>
-                        <h6 class="fw-normal fst-italic text-primary mb-4">Лікар-невролог</h6>
-                        <p class="fw-normal text-primary mb-4">Досвід: з 2017</p>
-                    </div>
-                </div>
-                </div>
-                <div class="doctor-item">
-                <div class="bg-light rounded text-center">
-                    <div class="position-relative">
-                        <img class="img-fluid rounded" src="img/doctor-5.jpg" alt="">
-                    </div>
-                    <div class="text-center py-5">
-                        <h3>Руденко Людмила</h3>
-                        <h3>Андріївна</h3>
-                        <h6 class="fw-normal fst-italic text-primary mb-4">Лікар-кардіолог</h6>
-                        <p class="fw-normal text-primary mb-4">Досвід: з 1995</p>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
     </div>
-                
-         
-                
-             
-                <!-- Footer -->
-    <div class="container-fluid bg-dark text-light mt-3 py-2">
-        <div class="container py-3">
-            <div class="row g-3">
-                <div class="col-lg-3 col-md-4">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
-                        Контактна інформація</h4>
-                    <p class="mb-4">Clinic group - 2022</p>
+    <!-- Feedback End -->
 
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <p></p><br>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i> Київ, Україна</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>clinic@gmail.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+38063-123-45-67</p>
-                </div>
-                <div class="col-lg-3 col-md-5">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
-                        Соціальні мережі</h4>
 
-                    <div class="d-flex mt-auto p-2">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0"><a class="text-primary" href="#">Winx-3 course</a> All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by Winx</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
