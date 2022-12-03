@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ua">
 
@@ -23,9 +27,10 @@
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <h1><img src="img/favicon.ico" width="50" height="50" class="fa fa-clinic-medical me-2" alt="">
-                <span class="m-0 text-uppercase text-primary">Clinic</h1></span>
+                        <span class="m-0 text-uppercase text-primary">Clinic
+                    </h1></span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -33,12 +38,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Головна</a>
-                        <a href="about.html" class="nav-item nav-link active">Про нас</a>
-                        <a href="contact.html" class="nav-item nav-link">Контакти</a>
-                        <a href="price.html" class="nav-item nav-link">Прайс</a>
-                        <a href="doctors.html" class="nav-item nav-link">Cпеціалісти</a>
-                        <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <a href="index.php" class="nav-item nav-link">Головна</a>
+                        <a href="about.php" class="nav-item nav-link active">Про нас</a>
+                        <a href="contact.php" class="nav-item nav-link">Контакти</a>
+                        <a href="price.php" class="nav-item nav-link">Прайс</a>
+                        <a href="doctors.php" class="nav-item nav-link">Cпеціалісти</a>
+
+
+                        <?php if (!empty($_SESSION['login']) && $_SESSION['login'] != "admin@clinic.ua") : ?>
+                            <a href="user_account.php" class="nav-item nav-link">Мій акаунт</a>
+                        <?php elseif (!empty($_SESSION['login']) && $_SESSION['login'] == "admin@clinic.ua") : ?>
+                            <a href="admin.php" class="nav-item nav-link">Admin</a>
+                        <?php else : ?>
+                            <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </nav>
@@ -52,8 +65,7 @@
             <div class="row gx-5">
                 <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded"
-                            src="img/about.jpg" style="object-fit: contain;">
+                        <img class="position-absolute w-100 h-100 rounded" src="img/about.jpg" style="object-fit: contain;">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -117,11 +129,10 @@
                             <div class="mt-auto p-4">
                                 <h3>Анастасія Жирнова</h3>
                                 <h6 class="fw-normal fst-italic text-primary mb-4">Scrum-майстер</h6>
-                            
+
                             </div>
                             <div class="d-flex mt-auto border-top p-4">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                        class="fab fa-instagram"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -137,8 +148,7 @@
                                 <h6 class="fw-normal fst-italic text-primary mb-4">Backend-розробник</h6>
                             </div>
                             <div class="d-flex mt-auto border-top p-4">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
                             </div>
                         </div>
                     </div>
@@ -154,8 +164,7 @@
                                 <h6 class="fw-normal fst-italic text-primary mb-4">Front-End, тестувальник</h6>
                             </div>
                             <div class="d-flex mt-auto border-top p-4">
-                                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                        class="fab fa-instagram"></i></a>
+                                <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -164,9 +173,8 @@
         </div>
     </div>
     <!-- Team -->
-	
-	
-	
+
+
     <!-- Footer -->
     <div class="container-fluid bg-dark text-light mt-3 py-2">
         <div class="container py-3">
@@ -188,12 +196,9 @@
                         Соціальні мережі</h4>
 
                     <div class="d-flex mt-auto p-2">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -224,4 +229,5 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
