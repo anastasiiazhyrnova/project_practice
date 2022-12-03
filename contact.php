@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +26,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <h1><img src="img/favicon.ico" width="50" height="50" class="fa fa-clinic-medical me-2" alt="">
                         <span class="m-0 text-uppercase text-primary">Clinic
                     </h1></span>
@@ -32,12 +36,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Головна</a>
-                        <a href="about.html" class="nav-item nav-link">Про нас</a>
-                        <a href="contact.html" class="nav-item nav-link active">Контакти</a>
-                        <a href="price.html" class="nav-item nav-link">Прайс</a>
-                        <a href="doctors.html" class="nav-item nav-link">Cпеціалісти</a>
-                        <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <a href="index.php" class="nav-item nav-link">Головна</a>
+                        <a href="about.php" class="nav-item nav-link">Про нас</a>
+                        <a href="contact.php" class="nav-item nav-link active">Контакти</a>
+                        <a href="price.php" class="nav-item nav-link">Прайс</a>
+                        <a href="doctors.php" class="nav-item nav-link">Cпеціалісти</a>
+
+                        <?php if (!empty($_SESSION['login']) && $_SESSION['login'] != "admin@clinic.ua") : ?>
+                            <a href="user_account.php" class="nav-item nav-link">Мій акаунт</a>
+                        <?php elseif (!empty($_SESSION['login']) && $_SESSION['login'] == "admin@clinic.ua") : ?>
+                            <a href="admin.php" class="nav-item nav-link">Admin</a>
+                        <?php else : ?>
+                            <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </nav>
@@ -53,30 +64,24 @@
             </div>
             <div class="row g-5 mb-5">
                 <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
-                        style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
-                            style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
                             <i class="fa fa-2x fa-location-arrow text-white" style="transform: rotate(15deg);"></i>
                         </div>
-                        <h6 class="mb-0">Київ, Україна <br/> вулиця Княжий Затон, 21</h6>
+                        <h6 class="mb-0">Київ, Україна <br /> вулиця Княжий Затон, 21</h6>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
-                        style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
-                            style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
                             <i class="fa fa-2x fa-phone text-white" style="transform: rotate(15deg);"></i>
                         </div>
                         <h6 class="mb-0">+38063-123-45-67</h6>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
-                        style="height: 200px;">
-                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
-                            style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                    <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center" style="height: 200px;">
+                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 100px; height: 70px; transform: rotate(-15deg);">
                             <i class="fa fa-2x fa-envelope-open text-white" style="transform: rotate(15deg);"></i>
                         </div>
                         <h6 class="mb-0">clinic@gmail.com</h6>
@@ -86,8 +91,7 @@
             <div class="row">
                 <div class="col-12" style="height: 500px;">
                     <div class="position-relative h-100">
-                        <iframe class="position-relative w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.1715191626104!2d30.616617015052636!3d50.4006409984611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c44df23366b7%3A0x6f18d2f8acee4e47!2z0JzQpiAi0JzQvtGPINCa0LvQuNC90LjQutCwIiDQntGB0L7QutC-0YDQutC4!5e0!3m2!1sru!2sua!4v1669200615687!5m2!1sru!2sua" 
-                        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe class="position-relative w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2543.1715191626104!2d30.616617015052636!3d50.4006409984611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4c44df23366b7%3A0x6f18d2f8acee4e47!2z0JzQpiAi0JzQvtGPINCa0LvQuNC90LjQutCwIiDQntGB0L7QutC-0YDQutC4!5e0!3m2!1sru!2sua!4v1669200615687!5m2!1sru!2sua" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     </div>
                 </div>
@@ -117,12 +121,9 @@
                         Соціальні мережі</h4>
 
                     <div class="d-flex mt-auto p-2">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
