@@ -33,7 +33,7 @@ $res_assign = $db->makeQuery($sql_assignments);
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <h1><img src="img/favicon.ico" width="50" height="50" class="fa fa-clinic-medical me-2" alt="">
                         <span class="m-0 text-uppercase text-primary">Clinic
                     </h1></span>
@@ -43,18 +43,23 @@ $res_assign = $db->makeQuery($sql_assignments);
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Головна</a>
-                        <a href="about.html" class="nav-item nav-link">Про нас</a>
-                        <a href="contact.html" class="nav-item nav-link">Контакти</a>
-                        <a href="price.html" class="nav-item nav-link">Прайс</a>
-                        <a href="doctors.html" class="nav-item nav-link">Cпеціалісти</a>
-                        <a href="auth.php" class="nav-item nav-link active">Вхід/Реєстрація</a>
+                        <a href="index.php" class="nav-item nav-link">Головна</a>
+                        <a href="about.php" class="nav-item nav-link">Про нас</a>
+                        <a href="contact.php" class="nav-item nav-link">Контакти</a>
+                        <a href="price.php" class="nav-item nav-link">Прайс</a>
+                        <a href="doctors.php" class="nav-item nav-link">Cпеціалісти</a>
+
+                        <?php if ($_SESSION['login'] == "admin@clinic.ua") : ?>
+                            <a href="admin.php" class="nav-item nav-link active">Admin</a>
+                        <?php else : ?>
+                            <a href="user_account.php" class="nav-item nav-link active">Мій акаунт</a>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-
 
     <div class="container-fluid py-2">
         <div class="container">
@@ -83,7 +88,6 @@ $res_assign = $db->makeQuery($sql_assignments);
         </div>
     </div>
 
-
     <p><b>Ваші записи:</b></p>
     <div class="col-md-12 text-center">
         <div class="container">
@@ -92,7 +96,7 @@ $res_assign = $db->makeQuery($sql_assignments);
                     <thead class="bg-light">
                         <tr class="header">
                             <td class="text-center">Лікар</td>
-                            <td class="text-center">ФІО</td>
+                            <td class="text-center">ПІБ</td>
                             <td class="text-center">Дата та час</td>
                         </tr>
                         <?php foreach ($res_assign as $row) : ?>
@@ -114,9 +118,10 @@ $res_assign = $db->makeQuery($sql_assignments);
         <div class="container">
             <form action="logout.php">
                 <p></p>
-                <input type="submit" class ='button_lout' value="Вийти" />
+                <input type="submit" class='button_lout' value="Вийти" />
             </form>
         </div>
     </div>
 </body>
+
 </html>
