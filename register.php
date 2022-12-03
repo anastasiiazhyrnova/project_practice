@@ -31,7 +31,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <h1><img src="img/favicon.ico" width="50" height="50" class="fa fa-clinic-medical me-2" alt="">
                 <span class="m-0 text-uppercase text-primary">Clinic</h1></span>
                 </a>
@@ -41,11 +41,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Головна</a>
-                        <a href="about.html" class="nav-item nav-link">Про нас</a>
-                        <a href="contact.html" class="nav-item nav-link">Контакти</a>
-                        <a href="price.html" class="nav-item nav-link">Прайс</a>
-                        <a href="doctors.html" class="nav-item nav-link">Cпеціалісти</a>
+                        <a href="index.php" class="nav-item nav-link">Головна</a>
+                        <a href="about.php" class="nav-item nav-link">Про нас</a>
+                        <a href="contact.php" class="nav-item nav-link">Контакти</a>
+                        <a href="price.php" class="nav-item nav-link">Прайс</a>
+                        <a href="doctors.php" class="nav-item nav-link">Cпеціалісти</a>
 						<a href="auth.php" class="nav-item nav-link active">Вхід/Реєстрація</a>
                     </div>
                 </div>
@@ -60,10 +60,9 @@
             <div class="row gx-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="mb-4">
-                        <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Реєстрація кліента</h5>
-                        <h1 class="display-4">Make An Appointment For Your Family</h1>
+                        <h3 class="d-inline-block text-white text-uppercase border-bottom border-5">Реєстрація кліента</h3>
                     </div>
-                    <p class="text-white mb-5">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua.</p>
+                    <p class="text-white mb-5">Заповніть форму й ви з легкістю зможете обрати найкращий час та записатися до лікаря!</p>
                     <h6 class="text-black mb-3">Вже маєте акаунт?</h6>
                     <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="auth.php">Увійти</a>
                 </div>
@@ -115,7 +114,7 @@
     </div>
     <!-- Appointment End -->
 	
-	    <!-- Footer -->
+	<!-- Footer -->
 
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
