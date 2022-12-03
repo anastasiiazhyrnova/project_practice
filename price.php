@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="ua">
 
@@ -9,11 +13,11 @@
     <link href="img/favicon.ico" rel="icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/style_price.css" rel="stylesheet">
 </head>
 
@@ -21,7 +25,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <h1><img src="img/favicon.ico" width="50" height="50" class="fa fa-clinic-medical me-2" alt="">
                         <span class="m-0 text-uppercase text-primary">Clinic
                     </h1></span>
@@ -31,12 +35,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Головна</a>
-                        <a href="about.html" class="nav-item nav-link">Про нас</a>
-                        <a href="contact.html" class="nav-item nav-link">Контакти</a>
-                        <a href="price.html" class="nav-item nav-link active">Прайс</a>
-                        <a href="doctors.html" class="nav-item nav-link">Cпеціалісти</a>
-                        <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <a href="index.php" class="nav-item nav-link">Головна</a>
+                        <a href="about.php" class="nav-item nav-link">Про нас</a>
+                        <a href="contact.php" class="nav-item nav-link">Контакти</a>
+                        <a href="price.php" class="nav-item nav-link active">Прайс</a>
+                        <a href="doctors.php" class="nav-item nav-link">Cпеціалісти</a>
+
+                        <?php if (!empty($_SESSION['login']) && $_SESSION['login'] != "admin@clinic.ua") : ?>
+                            <a href="user_account.php" class="nav-item nav-link">Мій акаунт</a>
+                        <?php elseif (!empty($_SESSION['login']) && $_SESSION['login'] == "admin@clinic.ua") : ?>
+                            <a href="admin.php" class="nav-item nav-link">Admin</a>
+                        <?php else : ?>
+                            <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </nav>
