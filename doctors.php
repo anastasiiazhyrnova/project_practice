@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +28,7 @@
     <div class="container-fluid sticky-top bg-white shadow-sm mb-5">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <h1><img src="img/favicon.ico" width="50" height="50" class="fa fa-clinic-medical me-2" alt="">
                         <span class="m-0 text-uppercase text-primary">Clinic
                     </h1></span>
@@ -34,12 +38,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Головна</a>
-                        <a href="about.html" class="nav-item nav-link">Про нас</a>
-                        <a href="contact.html" class="nav-item nav-link">Контакти</a>
-                        <a href="price.html" class="nav-item nav-link">Прайс</a>
-                        <a href="doctors.html" class="nav-item nav-link active">Cпеціалісти</a>
-                        <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <a href="index.php" class="nav-item nav-link">Головна</a>
+                        <a href="about.php" class="nav-item nav-link">Про нас</a>
+                        <a href="contact.php" class="nav-item nav-link">Контакти</a>
+                        <a href="price.php" class="nav-item nav-link">Прайс</a>
+                        <a href="doctors.php" class="nav-item nav-link active">Cпеціалісти</a>
+
+                        <?php if (!empty($_SESSION['login']) && $_SESSION['login'] != "admin@clinic.ua") : ?>
+                            <a href="user_account.php" class="nav-item nav-link">Мій акаунт</a>
+                        <?php elseif (!empty($_SESSION['login']) && $_SESSION['login'] == "admin@clinic.ua") : ?>
+                            <a href="admin.php" class="nav-item nav-link">Admin</a>
+                        <?php else : ?>
+                            <a href="auth.php" class="nav-item nav-link">Вхід/Реєстрація</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </nav>
@@ -63,19 +74,16 @@
     <!-- Doctor - Table -->
     <div class="container-fluid py-2">
         <div class="container">
-            <input type="text" id="le-Input-1" onkeyup="tableSearch()" placeholder="Пошук за інфо лікаря.."
-                title="Введіть потрібний запит" style=" display:inline">
+            <input type="text" id="le-Input-1" onkeyup="tableSearch()" placeholder="Пошук за інфо лікаря.." title="Введіть потрібний запит" style=" display:inline">
             <p></p>
             <table>
                 <tr>
                     <td>
-                        <input type='checkbox' onclick='return filter_type(this);' name='filter' id="Чоловік"
-                            value="Чоловік" />
+                        <input type='checkbox' onclick='return filter_type(this);' name='filter' id="Чоловік" value="Чоловік" />
                         Чоловік
                     </td>
                     <td>
-                        <input type='checkbox' onclick='return filter_type(this);' name='filter' id="Жінка"
-                            value="Жінка" /> Жінка
+                        <input type='checkbox' onclick='return filter_type(this);' name='filter' id="Жінка" value="Жінка" /> Жінка
                     </td>
                 </tr>
             </table>
@@ -97,8 +105,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-1.png" alt="" style="width: 45px; height: 45px"
-                                        class="rounded-circle" />
+                                    <img src="./img/doc-1.png" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Гнатюк Софія Михайлівна
                                         </p>
@@ -125,8 +132,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-2.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-2.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Семеновa Інна Степанівна
                                     </div>
@@ -151,8 +157,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-3.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-3.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Денисенков Антон Іванович
                                         </p>
@@ -179,8 +184,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-4.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-4.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Гриценко Олег Віталійович
                                         </p>
@@ -207,8 +211,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-5.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-5.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Заворотченко Іван Євгенович</p>
                                         <p></p>
@@ -233,8 +236,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-6.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-6.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Данилюк Анна Володимірівна</p>
                                         <p></p>
@@ -260,8 +262,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-7.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-7.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Гончаренко Олеся Петрівна</p>
                                         <p></p>
@@ -286,8 +287,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-8.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-8.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Кириченко Анатолій Андрійович</p>
                                         <p></p>
@@ -313,8 +313,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-9.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-9.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Матвійчук Кірілл Денисович
                                         </p>
@@ -341,8 +340,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-10.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-10.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Федорова Катерина Сергіївна</p>
                                         <p></p>
@@ -368,8 +366,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-11.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-11.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Левчук Яна Вікторівна
                                         </p>
@@ -395,8 +392,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-12.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-12.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Кузнецова Євгенія Богданівна</p>
                                         <p></p>
@@ -422,8 +418,7 @@
                         <tr class='clickable-row' data-href='#link'>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="./img/doc-13.png" class="rounded-circle" alt=""
-                                        style="width: 45px; height: 45px" />
+                                    <img src="./img/doc-13.png" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-1 text-center">Муляр Андрій Миколайович
                                         </p>
@@ -452,22 +447,19 @@
         </div>
     </div>
 
-
-    <div class="container-fluid py-2">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-4"></div>
-
-                <div class="col-md-4 align-items-center">
-                    <button class="btn btn-primary w-100 py-3" type="submit" title="Записатись"
-                        onclick="window.location.href = 'appointment.html';">
-                        Записатись до лікаря</button>
+    <?php if (!empty($_SESSION['login'])) : ?>
+        <div class="container-fluid py-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 align-items-center">
+                        <button class="btn btn-primary w-100 py-3" type="submit" title="Записатись" onclick="window.location.href = 'appointment.html';">
+                            Записатись до лікаря</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    <?php endif; ?>
 
     <!-- Feedback Start -->
     <div class="container-fluid py-5">
@@ -482,8 +474,7 @@
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
                                 <img class="img-fluid rounded-circle mx-auto" src="img/review-1.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
                                     <i class="fa fa-quote-left fa-2x text-primary"></i>
                                 </div>
                             </div>
@@ -496,8 +487,7 @@
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
                                 <img class="img-fluid rounded-circle mx-auto" src="img/review-2.png" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
                                     <i class="fa fa-quote-left fa-2x text-primary"></i>
                                 </div>
                             </div>
@@ -510,8 +500,7 @@
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
                                 <img class="img-fluid rounded-circle mx-auto" src="img/review-4.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
                                     <i class="fa fa-quote-left fa-2x text-primary"></i>
                                 </div>
                             </div>
@@ -524,8 +513,7 @@
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
                                 <img class="img-fluid rounded-circle mx-auto" src="img/review-3.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
                                     <i class="fa fa-quote-left fa-2x text-primary"></i>
                                 </div>
                             </div>
@@ -538,8 +526,7 @@
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
                                 <img class="img-fluid rounded-circle mx-auto" src="img/review-5.jpg" alt="">
-                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
-                                    style="width: 60px; height: 60px;">
+                                <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
                                     <i class="fa fa-quote-left fa-2x text-primary"></i>
                                 </div>
                             </div>
