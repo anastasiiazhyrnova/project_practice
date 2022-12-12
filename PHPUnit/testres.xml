@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="0.000878">
+    <testcase name="testSurname" class="UserTest" classname="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" line="18" assertions="1" time="0.000379"/>
+    <testcase name="testName" class="UserTest" classname="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" line="22" assertions="1" time="0.000134"/>
+    <testcase name="testPatronymic" class="UserTest" classname="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" line="26" assertions="1" time="0.000070"/>
+    <testcase name="testEmail" class="UserTest" classname="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" line="30" assertions="1" time="0.000082"/>
+    <testcase name="testPassword" class="UserTest" classname="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" line="35" assertions="1" time="0.000068"/>
+    <testcase name="testGender" class="UserTest" classname="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" line="39" assertions="1" time="0.000076"/>
+    <testcase name="testRole" class="UserTest" classname="UserTest" file="C:\Users\Alina\Desktop\nst\project_practice\PHPUnit\UserUnitTest.php" line="43" assertions="1" time="0.000069"/>
+  </testsuite>
+</testsuites>
