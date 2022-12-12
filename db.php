@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     class ClinicDB {
         private $errText = "";
         private $conn;
@@ -9,7 +9,7 @@
         }
         function connect(){
             try{
-                $serverName = "DESKTOP-Q4SMK7F";
+                $serverName = "ALINA-PC\SQLEXPRESS";
                 $connectionOptions = [ 
                     "Database" => "clinicdb",
                     "Uid" => "",
