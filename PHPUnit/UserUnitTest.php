@@ -1,8 +1,6 @@
 <?php
 
-require_once 'User.php';
-
-
+require 'User.php';
 use PHPUnit\Framework\TestCase;
 class UserTest extends TestCase{
     private $surname='Гошева';
@@ -45,21 +43,5 @@ class UserTest extends TestCase{
         $this->UserTestInstance->set_role($this->role);
         $this->assertEquals($this->role, $this->UserTestInstance->get_role());
     }
-
-    /**
-     */
-
-    /**
-     * @param mixed $surname 
-     * @param mixed $name 
-     * @param mixed $patronymic 
-     * @param mixed $email 
-     * @param mixed $gender 
-     * @param mixed $role 
-     * @param mixed $birth_date 
-     * @param mixed $password 
-     */
-
-
 }
 ?>
