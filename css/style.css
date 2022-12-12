@@ -9,11 +9,18 @@ p, div, li, h1, h2, h3, h4, h5, h6 {
     --secondary: #354F8E;
     --light: #EFF5F9;
     --dark: #1D2A4D;
+    --gray: #232428;
 }
 
 .btn {
     font-weight: 700;
     transition: .5s;
+}
+
+.horizontal-gradient {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(113,113,227,0.6085784655659139) 0%, rgba(0,212,255,1) 100%);
+    color:var(--gray)
 }
 
 .btn:hover {
