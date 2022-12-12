@@ -10,6 +10,7 @@ class UserTest extends TestCase{
     private $gender="female";
     private $role='user';
     private $password='123test';
+    private $UserTestInstance;
 
      protected function setUp():void{
         $this->UserTestInstance=new User();
